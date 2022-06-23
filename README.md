@@ -1,44 +1,55 @@
-# Docker Compose Spring Boot and MySQL example
+## Prueba tecnica lider
+El proyecto se encuentra dockerizado, si desea correrlo sin docker debe tener instalado mysql y java-jdk-8
 
-## Run the System
-We can easily run the whole with only a single command:
+## arrancar proyecto con docker
 ```bash
 docker-compose up
 ```
 
-Docker will pull the MySQL and Spring Boot images (if our machine does not have it before).
-
-The services can be run on the background with command:
+## curl ejemplo, creación usuario completo
 ```bash
-docker-compose up -d
+curl --location --request POST 'localhost:6868/api/usuarios' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "usuario uno",
+    "lastName": "usuario uno",
+    "complete": true
+}'
 ```
 
-## Stop the System
-Stopping all the running containers is also simple with a single command:
+## curl ejemplo, consulta usuarios
 ```bash
-docker-compose down
+curl --location --request GET 'localhost:6868/api/usuarios'
 ```
 
-If you need to stop and remove all containers, networks, and all images used by any service in <em>docker-compose.yml</em> file, use the command:
+## curl ejemplo, edición de usuario
 ```bash
-docker-compose down --rmi all
+curl --location --request PUT 'localhost:6868/api/usuarios/2' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "usuario dos",
+    "lastName": "usuario dos",
+    "complete": true
+}'
+```
+## curl ejemplo, consulta proyectos
+```bash
+curl --location --request GET 'localhost:6868/api/proyectos'
 ```
 
-For more detail, please visit:
-> [Docker Compose Spring Boot and MySQL example](https://www.bezkoder.com/docker-compose-spring-boot-mysql/)
+## curl ejemplo, invertir
+```bash
+curl --location --request POST 'localhost:6868/api/inversiones' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user_id": 2,
+    "proyect_id": 1,
+    "amount": 1000000
+}
+'
+```
 
-Related Posts:
-> [Spring Boot JPA + MySQL - Building Rest CRUD API example](https://www.bezkoder.com/spring-boot-jpa-crud-rest-api/)
-
-> [Spring Boot + GraphQL + MySQL example](https://www.bezkoder.com/spring-boot-graphql-mysql-jpa/)
-
-> [Spring Boot Rest XML example – Web service with XML Response](https://www.bezkoder.com/spring-boot-rest-xml/)
-
-> [Spring Boot: Upload CSV file data into MySQL Database](https://www.bezkoder.com/spring-boot-upload-csv-file/)
-
-> [Spring Boot: Upload Excel file data into MySQL Database](https://www.bezkoder.com/spring-boot-upload-excel-file-database/)
-
-> [Deploy Spring Boot App on AWS – Elastic Beanstalk](https://www.bezkoder.com/deploy-spring-boot-aws-eb/)
-
-Security:
-> [Spring Boot + Spring Security JWT Authentication & Authorization](https://www.bezkoder.com/spring-boot-jwt-authentication/)
+## curl ejemplo, consulta inversiones invertir
+```bash
+curl --location --request GET 'localhost:6868/api/inversiones'
+```
