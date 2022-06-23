@@ -1,7 +1,12 @@
 package com.prueba_lider.spring.datajpa.model;
 
 import javax.persistence.*;
-
+/**
+ * Clase entidad tipo proyecto (Contiene métodos de encapsulamiento)
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 @Entity
 @Table(name = "proyectos")
 public class Proyecto {

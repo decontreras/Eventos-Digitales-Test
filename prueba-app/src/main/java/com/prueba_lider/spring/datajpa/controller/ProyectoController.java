@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prueba_lider.spring.datajpa.model.Proyecto;
 import com.prueba_lider.spring.datajpa.repository.ProyectoRepository;
 
+/**
+ * Controlador para la gesión de proyectos
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
@@ -21,7 +27,13 @@ public class ProyectoController {
 
 	@Autowired
 	ProyectoRepository proyectoRepository;
-
+	
+	/**
+	 * Método para la consulta de proyectos
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@GetMapping("/proyectos")
 	public ResponseEntity<?> getProyectos() {
 		try {

@@ -1,5 +1,11 @@
 package com.prueba_lider.spring.datajpa.DTO;
 
+/**
+ * Clase para el mapeo de objetos tipo inversión (Contiene métodos de encapsulamiento)
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 public class inversionDTO {
 	
     private Long user_id;

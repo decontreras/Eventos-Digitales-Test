@@ -2,6 +2,12 @@ package com.prueba_lider.spring.datajpa.model;
 
 import javax.persistence.*;
 
+/**
+ * Clase entidad tipo usuario (Contiene métodos de encapsulamiento)
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 @Entity
 @Table(name = "usuarios")
 public class Usuarios {

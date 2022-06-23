@@ -25,6 +25,13 @@ import com.prueba_lider.spring.datajpa.repository.InversionRepository;
 import com.prueba_lider.spring.datajpa.repository.ProyectoRepository;
 import com.prueba_lider.spring.datajpa.repository.UsuariosRepository;
 
+
+/**
+ * Controlador para la gestión de inversiones
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
@@ -39,6 +46,12 @@ public class InversionController {
 	@Autowired
 	ProyectoRepository proyectoRepository;
 
+	/**
+	 * Método para la consulta de inversiones
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@GetMapping("/inversiones")
 	public ResponseEntity<List<Inversiones>> getAllInversiones() {
 		try {
@@ -55,7 +68,13 @@ public class InversionController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la consulta de inversiones por id
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@GetMapping("/inversiones/{id}")
 	public ResponseEntity<Inversiones> getInversionById(@PathVariable("id") Long id) {
 		Optional<Inversiones> inversionData = inversionRepository.findById(id);
@@ -66,7 +85,13 @@ public class InversionController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
+	
+	/**
+	 * Método para la creación de inversiones
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@PostMapping("/inversiones")
 	public ResponseEntity<?> createInversion(@RequestBody inversionDTO inversion) {
 		try {
@@ -102,7 +127,13 @@ public class InversionController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la eliminación de inversiones por id
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@DeleteMapping("/inversiones/{id}")
 	public ResponseEntity<HttpStatus> deleteInversion(@PathVariable("id") Long id) {
 		try {
@@ -112,7 +143,13 @@ public class InversionController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la eliminación de inversiones
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@DeleteMapping("/inversiones")
 	public ResponseEntity<HttpStatus> deleteAllInversiones() {
 		try {

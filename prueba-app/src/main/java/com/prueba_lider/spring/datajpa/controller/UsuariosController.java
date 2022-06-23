@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prueba_lider.spring.datajpa.model.Usuarios;
 import com.prueba_lider.spring.datajpa.repository.UsuariosRepository;
 
+/**
+ * Controlador para la gestión de usuarios
+ *
+ * @version 	23/06/2022
+ * @author 	Daniel Contreras
+ */
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
@@ -28,7 +34,13 @@ public class UsuariosController {
 
 	@Autowired
 	UsuariosRepository UsuariosRepository;
-
+	
+	/**
+	 * Método para la consulta de usuarios
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@GetMapping("/usuarios")
 	public ResponseEntity<List<Usuarios>> getAllUsuarios(@RequestParam(required = false) String name) {
 		try {
@@ -48,7 +60,13 @@ public class UsuariosController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la consulta de usuarios por id
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@GetMapping("/usuarios/{id}")
 	public ResponseEntity<Usuarios> getUsuarioById(@PathVariable("id") Long id) {
 		Optional<Usuarios> usuarioData = UsuariosRepository.findById(id);
@@ -59,7 +77,13 @@ public class UsuariosController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
+	
+	/**
+	 * Método para la creación de usuarios
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@PostMapping("/usuarios")
 	public ResponseEntity<Usuarios> createUsuario(@RequestBody Usuarios Usuarios) {
 		try {
@@ -70,7 +94,13 @@ public class UsuariosController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la modificación de usuarios
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@PutMapping("/usuarios/{id}")
 	public ResponseEntity<Usuarios> updateUsuario(@PathVariable("id") Long id, @RequestBody Usuarios Usuarios) {
 		Optional<Usuarios> usuarioData = UsuariosRepository.findById(id);
@@ -86,7 +116,13 @@ public class UsuariosController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
+	
+	/**
+	 * Método para la eliminación de usuarios por id
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@DeleteMapping("/usuarios/{id}")
 	public ResponseEntity<HttpStatus> deleteUsuario(@PathVariable("id") Long id) {
 		try {
@@ -96,7 +132,13 @@ public class UsuariosController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	/**
+	 * Método para la eliminación de usuarios
+	 *
+	 * @version 	23/06/2022
+	 * @author 	Daniel Contreras
+	 */
 	@DeleteMapping("/usuarios")
 	public ResponseEntity<HttpStatus> deleteAllUsuarios() {
 		try {
