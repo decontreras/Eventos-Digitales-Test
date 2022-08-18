@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Registrar</h1>
+<div mat-dialog-content>
+    <p>Datos del evento</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Seleccione una opcion...</mat-label>
+        <mat-select [formControl]="platformF" required>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let platform of data.platforms" value="{{ platform.id }}">
+                {{ platform.name }} : {{ platform.description }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="platformF.invalid">Campo requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Seleccione una opcion...</mat-label>
+        <mat-select [formControl]="typeF" required>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let typeE of data.typeEvents" value="{{ typeE.idevent }}">
+                {{ typeE.idevent }} : {{ typeE.description }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="typeF.invalid">Campo requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Cantidad</mat-label>
+        <input type="number" matInput [formControl]="amountF" required>
+        <mat-error *ngIf="amountF.invalid">Campo requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="dateF" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="dateF.invalid">Campo requerido</mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="action()">Guardar</button>
+</div>

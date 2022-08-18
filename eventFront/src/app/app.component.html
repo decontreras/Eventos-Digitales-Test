@@ -1,0 +1,88 @@
+<div class="title">
+  Eventos Digitales bvc
+</div>
+<div class="search">
+  <div class="label">Plataforma Digital</div>
+  <div class="select">
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una opcion...</mat-label>
+      <mat-select>
+        <mat-option (click)="filterData(null)">None</mat-option>
+        <mat-option (click)="filterData(platform.id)" *ngFor="let platform of platforms" value="{{ platform.id }}">
+          {{ platform.name }} : {{ platform.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- platform.name Column -->
+    <ng-container matColumnDef="platform.name">
+      <th mat-header-cell *matHeaderCellDef> Plataforma </th>
+      <td mat-cell *matCellDef="let element"> {{element.platform.name}} - {{element.platform.description}} </td>
+    </ng-container>
+
+    <!-- event.description Column -->
+    <ng-container matColumnDef="event.description">
+      <th mat-header-cell *matHeaderCellDef> Evento </th>
+      <td mat-cell *matCellDef="let element"> {{element.event.idevent}} - {{element.event.description}} </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <!-- quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Costo </th>
+      <td mat-cell *matCellDef="let element"> ${{element.amount}} </td>
+    </ng-container>
+
+    <!-- actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="button-action">
+          <div class="update">
+            <button mat-mini-fab color="primary" aria-label="update" (click)="openDialog(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div class="delete">
+            <button mat-mini-fab color="warn" aria-label="delete" (click)="delete(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+<div class="button">
+  <button mat-fab color="primary" aria-label="add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

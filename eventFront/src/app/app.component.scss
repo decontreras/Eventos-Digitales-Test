@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+}
+
+.title {
+  font-family: fantasy;
+  font-size: 25px;
+  margin: 15px auto;
+  width: 220px;
+}
+
+.label {
+  font-family: fantasy;
+  font-size: 15px;
+  padding: 20px 5px 0 0;
+}
+
+.search {
+  display: flex;
+  margin: 10px auto;
+  width: 325px;
+}
+
+.select {
+  padding-left: 5px;
+}
+
+.button {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.button-action{
+  display: flex;
+}
+
+.update{
+  margin: 0 5px 0 0;
+}
+
+.delete{
+  margin: 0 0 0 5px;
+}
