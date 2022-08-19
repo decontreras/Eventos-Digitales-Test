@@ -3,13 +3,13 @@ El proyecto se encuentra dockerizado, si desea correrlo sin docker debe tener in
 
 ## arrancar proyecto back con docker
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 ## arrancar proyecto front con docker
 ```bash
 docker image build -t event-front .
-docker run -p 80:80 --rm  event-front
+docker run -d -p 80:80 --rm  event-front
 ```
 
 ## programa
